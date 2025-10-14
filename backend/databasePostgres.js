@@ -25,6 +25,20 @@ export class DatabasePostgress{
     }
 
     async findByEmail(email){
-        const result = await
+        const result = await sql`SELECT * FROM users WHERE email = ${email};`;
+        return result[0];
+    }
+
+    async update(id, user){
+        const { name, email }  = user;
+        await sql `
+        UPDATE users
+        SET name = ${name}, email = ${email}
+        WHERE id = ${id}
+        `
+    }
+
+    async delete(id){
+        await sql`DELETE FROM users WHERE id = ${id}`;
     }
 }
