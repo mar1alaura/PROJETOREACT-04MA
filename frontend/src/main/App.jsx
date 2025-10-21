@@ -1,25 +1,16 @@
-import logo from './logo.svg';
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from '../auth/AuthContext';
+import PrivateRoutes from '../auth/PrivateRoute';
 
-export default App;
+import Logo from '../componentes/template/Logo'
+import Nav from  '../componentes/tyemplate/Nav'
+
+import Login from '../components/user/LoginForm';
+import Register from '../components/user/RegisterForm';
+import UserCrud from '../components/user/UserCrud';
+import Home from '.

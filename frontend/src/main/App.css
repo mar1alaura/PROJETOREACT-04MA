@@ -45,5 +45,42 @@ aside.menu-area{
 }
 
 main.content{
+  grid-area: content;
+}
+
+footer.footer{
   grid-area: footer;
 }
+
+@media(max-width: 768px){
+  .app{
+    grid-auto-rows:
+    var(--header-height)
+    var(--menu-top-height)
+    1fr
+    var(--footer-height);
+    grid-template-columns: var(--aside-width) 1fr;
+    grid-template-areas: 
+    "logo header"
+    "menu menu"
+    "content content"
+    "footer footer";
+  }
+}
+
+@media(max-width: 576px){
+  .app{
+    grid-auto-rows:
+    var(--logo-height)
+    var(--footer-height);
+    grid-template-columns: 1fr;
+    grid-template-rows: 
+    "logo"
+    "menu"
+    "header"
+    "content"
+    "footer";
+  }
+}
+
+
