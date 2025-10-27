@@ -7,11 +7,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from '../auth/AuthContext';
 import PrivateRoute from '../auth/PrivateRoute';
 
-
+//Componentes principais
 import Logo from '../componentes/template/Logo'
 import Nav from '../componentes/template/Nav'
 
-
+//Páginas
 import Login from '../components/user/LoginForm';
 import Register from '../components/user/RegisterForm';
 import UserCrud from '../components/user/UserCrud';
@@ -26,17 +26,17 @@ function App(){
                     {/* layout principal com grid e sem fundo branco */}
                     {/* Exibe a estrutura fixa apenas se o usuário estiver logado */}
                     <PrivateRoute>
-                        <Logo />
-                        <Nav />
+                       <Logo />
+                       <Nav /> 
                     </PrivateRoute>
                     <main className="app-content">
                         <Routes>
-                            {/* Rotas publica*/}
+                            {/* Rotas pública */}
                             <Route path="/login" element={<Login />}/>
                             <Route path="/register" element={<Register />}/>
 
                             {/* Rotas privadas */}
-                            <Route 
+                            <Route
                                 path="/"
 
                                 element={
@@ -44,23 +44,26 @@ function App(){
                                         <Home />
                                     </PrivateRoute>
                                 }
-                                 
-                                />
-                            <Route 
-                                path="/"
+                            />
+
+                            <Route
+                                path="/users"
 
                                 element={
                                     <PrivateRoute>
-                                        <UserCrud />
+                                        <UserCrud/>
                                     </PrivateRoute>
                                 }
-                                />
-                                {/* Redirecionamento padrão */}
-                                <Route path="*" element={<Navigate to="/login" replace/>}/>
+                            />
 
-     
+                            {/* Redirecionamento padrão */}
+                            <Route path="*" element={<Navigate to="/login" replace/>}/>
                         </Routes>
                     </main>
+
+                    <PrivateRoute>
+                        <Footer />
+                    </PrivateRoute>
                 </div>
             </Router>
         </AuthProvider>
